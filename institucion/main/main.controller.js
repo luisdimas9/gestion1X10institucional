@@ -15,20 +15,22 @@ function getInstitucionObrera(id) {
       }
     }) 
    .then(response => {
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
-    }
-    return response.json();
-  })
- .then(data => {
-    if (data.error) {
-      console.error(`Error: ${data.error}`);
-    } else {
-      const idInstitucion = data.id_institucion;
-      localStorage.setItem('institucion', idInstitucion);
-    }
-  })
- .catch(error => console.error(error));
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.error) {
+            console.error(`Error: ${data.error}`);
+        } else {
+            const idInstitucion = data.id_institucion;
+            localStorage.setItem('institucion', idInstitucion);
+        }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+    });
   }
 
   function getResumenInstitucionObrera(apiBaseURL, id) {
