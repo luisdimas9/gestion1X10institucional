@@ -10,7 +10,7 @@ function getInstitucionObrera(id) {
     fetch(`${url}/${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `${token}`,
         'Content-Type': 'application/json'
       }
     }) 
