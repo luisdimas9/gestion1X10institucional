@@ -5,12 +5,13 @@ const urls = urlsReporteInstitucion();
 const token = localStorage.getItem("token");
 
 function getInstitucionObrera(id) {
-    console.log(id);
+    const token = localStorage.getItem("token");
+    console.log(token);
     const url = urls.funcionario;
     fetch(`${url}/${id}`, {
       method: 'GET',
       headers: {
-        'Authorization': `${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     }) 
