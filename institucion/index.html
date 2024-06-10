@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gestion de 1X10 Institucional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  	<link href="../lib/icon-font-google/material-icons.css" rel="stylesheet"/>
+  	<link rel="stylesheet" href="../lib/normalize.min.css">
+	<link rel='stylesheet' href='../lib/materialize.min.css'>
+	
+	
+	<link rel="stylesheet" href="./dashboard.css">
+		
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+	<nav class="red accent-4">
+		<div class="nav-wrapper">
+			<div class="row">
+				<div class="col s12">
+					<a id="burger-icon-1" href="#" data-target="sidebar-1" class="left sidenav-trigger show-on-medium"><i class="material-icons">menu</i></a>
+					
+					<a class="brand-logo">1X10 Institucional</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+
+<!-- SIDEBAR 1 - HAS .SIDENAV-FIXED -->
+<ul id="sidebar-1" class="sidenav sidenav-fixed">
+	<li>
+		<div class="user-view">
+			<div class="background">
+				<img src="../image/images.jpeg" width="100%">
+			</div>
+			<a href="#!user"><img class="circle" src="../image/logopsuv.jpg"></a>
+			<a href="#!name"><span id="users" class="white-text name"></span></a>
+		</div>
+	</li>
+  <li><a href="#" id="menu-init" class="menu-button" data-target="#main-init"><i class="red-text text-accent-4 material-icons">grain</i>Inicio</a></li>
+	<li><a href="#" id="menu-funcionario" class="menu-button" data-target="#main-funcionario"><i class="red-text text-accent-4 material-icons">people</i>Clase Obrera</a></li>	
+	<li><a href="#" id="menu-unopordiez" class="menu-button" data-target="#main-unopordiez"><i class="red-text text-accent-4 material-icons">format_align_center</i>1X10</a></li>
+  <li><a href="#" id="menu-acta"><i class="material-icons red-text text-accent-4">face</i>Usuarios</a></li>
+  <li><a href="#" id="cerrar-sesion"><i class="material-icons red-text text-accent-4">power_settings_new</i>Cerrar Sesion</a></li>
+</ul>
+
+<main id="main-init" class="main-section">
+	<div class="container">    
+		<div class="row">
+
+      <div class="col s12 m6">
+        <div class="card red accent-4">
+          <div class="card-content white-text" id="chart-card">
+            <span class="card-title">1x10 Trabajadores</span>
+            <canvas id="TotalUnoPorDiezInstitucional"></canvas>
+          </div>
+          <div class="card-action">
+            <a href="#">N° Trabajadores:<p id="resumen-trabajadores"></p></a>
+            <a href="#">Registro:<p id="resumen-registro"></p></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card red accent-4">
+          <div class="card-content white-text" id="chart-card">
+            <span class="card-title">1x10 Institucional</span>
+            <canvas id="TotalUnoPorDiezTrabajadores"></canvas>
+          </div>
+          <div class="card-action">
+            <a href="#">N° Institucional:<p id="resumen-institucional"></p></a>
+            <a href="#">Registro:<p id="resumen-total-registro"></p></a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+</main>
+
+
+<main id="main-funcionario" class="main-section">
+ 	<div class="container" id="crud-funcionario">
+        <div class="row">
+            <div class="col s12 m12">
+                            
+                <div class="row">
+                    <div class="col s12">
+                      <table class="responsive-table">
+                        <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Cedula</th>
+                              <th>Cargo</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Telefono</th>                              
+                              <th>Acciones</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody id="funcionario-tbody">
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>               
+            </div>
+        </div>
+  </div>
+  <div class="fixed-action-btn">
+        <a class="z-depth-3 red accent-4 btn-floating btn-large modal-trigger" href="#modal-funcionario">
+          <i class="large material-icons">add</i>
+        </a>
+  </div>
+     <!-- Modal Structure -->
+  <div id="modal-funcionario" class="modal">
+    <div class="modal-content">
+      <h4>Gestion de Funcionarios:</h4>
+      <form class="col s12" id="form-formulario">
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="id_funcionario2" type="number" class="validate">
+            <label for="id_funcionario2">ID Funcionario</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="cedula2" type="number" class="validate">
+            <label for="cedula2">Cédula</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12">
+            <select id="id_cargo2">
+              
+            </select>
+            <label>Cargo Profesional:</label>
+          </div>         
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select id="id_politica2">
+              
+            </select>
+            <label>Cargo Politico Institucional:</label>
+          </div>           
+          <div class="input-field col s12 m6">
+            <input id="primer_nombre2" type="text" class="validate">
+            <label for="primer_nombre2">Primer Nombre</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="segundo_nombre2" type="text" class="validate">
+            <label for="segundo_nombre2">Segundo Nombre</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="primer_apellido2" type="text" class="validate">
+            <label for="primer_apellido2">Primer Apellido</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="segundo_apellido2" type="text" class="validate">
+            <label for="segundo_apellido2">Segundo Apellido</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="email2" type="email" class="validate">
+            <label for="email2">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="telefono_mobil2" type="text" class="validate">
+            <label for="telefono_mobil2">Teléfono Móvil</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="whatsapp2" type="text" class="validate">
+            <label for="whatsapp2">Whatsapp</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="telegram2" type="text" class="validate">
+            <label for="telegram2">Telegram</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <select id="id_estado1">
+              
+            </select>
+            <label>Estado:</label>
+          </div>                 
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select id="id_municipio1">
+              
+            </select>
+            <label>Municipio:</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <select id="id_ciudad1">
+              
+            </select>
+            <label>Ciudad:</label>
+          </div>          
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <select id="id_parroquia1">
+              
+            </select>
+            <label>Parroquia:</label>
+          </div>         
+          <div class="input-field col s12 m6">
+            <input id="edificio2" type="text" class="validate">
+            <label for="edificio2">Edificio</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="piso2" type="text" class="validate">
+            <label for="piso2">Piso</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="apartamento2" type="text" class="validate">
+            <label for="apartamento2">Apartamento</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="urbanismo2" type="text" class="validate">
+            <label for="urbanismo2">Urbanismo</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="calle2" type="text" class="validate">
+            <label for="calle2">Calle</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="casa2" type="text" class="validate">
+            <label for="casa2">Casa</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="punto_referencia2" type="text" class="validate">
+            <label for="punto_referencia2">Punto de Referencia</label>
+          </div>
+        </div>
+        
+        
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="editar_funcionario" class="modal-close waves-effect waves-light z-depth-3 red accent-4btn-small">Actualizar</a>
+      <a href="#!" id="agregar_funcionario" class="modal-close waves-effect waves-light z-depth-3 red accent-4 btn-small">Agregar</a>
+    </div>
+  </div>
+
+</main>
+
+<main id="main-unopordiez" class="main-section">
+  <div class="container">
+    <div class="row" id="card-unopordiez">
+      
+    </div>
+  </div>
+	<div class="container" id="crud-unopordiez">
+        <div class="row">
+            <div class="col s12 m12">                            
+                <div class="row">
+                    <div class="col s12">
+                      <table id="unopordiez-table" class="responsive-table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Cedula</th>
+                            <th>Cargo</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>                              
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody id="unopordiez-tbody">
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>               
+            </div>
+        </div>
+  </div>  
+     <!-- Modal Structure -->
+  <div id="modal-unopordiez" class="modal">
+    <div class="modal-content">
+      <h4>1X10 Funcionario: <h4 id="cedula_funcionario"></h4></h4>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12" style="display: none;">
+            <input id="unopordiez-titular" type="number" class="validate">
+            <label for="unopordiez-titular">Cedula 1X10</label>
+          </div>  
+          <div class="input-field col s12">
+            <input id="unopordiez-cedula" type="number" class="validate">
+            <label for="unopordiez-cedula">Cedula 1X10</label>
+          </div>          
+        </div>        
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="agregar_unopordiez" class="modal-close waves-effect waves-light red accent-4 btn-small">Agregar</a>
+    </div>
+  </div>
+  <!-- Modal Structure -->
+  <div id="modal-unopordiez-titular" class="modal">
+    <div class="modal-content">
+      <h4>1X10 Funcionario: <h4 id="cedula_titular"></h4></h4>
+        <div class="row">
+          <div class="col s12">
+            <table id="unopordiez-table">
+              <thead>
+                <tr>
+                    <th>Cedula</th>                                                
+                    <th>Acciones</th>
+                </tr>
+              </thead>
+      
+              <tbody id="carga-unopordiez-tbody">
+                
+              </tbody>
+            </table>
+          </div>
+      </div>      
+    </div>    
+  </div>
+
+</main>
+
+
+
+    <script src='../lib/jquery.min.js'></script>
+    <script src='../lib/materialize.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 	
+    <script src="./dashboard.js"></script>	
+    <script type="module" src="./main/main.js"></script>
+    <script type="module" src="./funcionarios/funcionario.js"></script>
+    <script type="module" src="./1X10/unopordiez.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gestion de 1X10 Sala Situacional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  	<link href="../lib/icon-font-google/material-icons.css" rel="stylesheet"/>
+  	<link rel="stylesheet" href="../lib/normalize.min.css">
+	<link rel='stylesheet' href='../lib/materialize.min.css'>
+	
+	
+	<link rel="stylesheet" href="./dashboard.css">
+		
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+	<nav class="red accent-4">
+		<div class="nav-wrapper">
+			<div class="row">
+				<div class="col s12">
+					<a id="burger-icon-1" href="#" data-target="sidebar-1" class="left sidenav-trigger show-on-medium"><i class="material-icons">menu</i></a>
+					
+					<a class="brand-logo">Sala Situacional 1X10</a>          
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="right" id="tfuncionario"></i>Funcionarios:</a></li>
+            <li><a href="#"><i class="right" id="1x10"></i>1 X 10:</a></li>
+            <li><a href="#"><i class="right" id="actualidad"></i>Actualidad:</a></li>
+          </ul>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+
+<!-- SIDEBAR 1 - HAS .SIDENAV-FIXED -->
+<ul id="sidebar-1" class="sidenav sidenav-fixed">
+	<li>
+		<div class="user-view">
+			<div class="background">
+				<img src="../image/images.jpeg" width="100%">
+			</div>
+			<a href="#!user"><img class="circle" src="../image/logopsuv.jpg"></a>
+			<a href="#!name"><span id="users" class="white-text name"></span></a>
+		</div>
+	</li>
+  <li><a href="#" id="menu-init" class="menu-button" data-target="#main-init"><i class="red-text text-accent-4 material-icons">grain</i>Inicio</a></li>
+
+	<li><a href="#" id="menu-unopordiez" class="menu-button" data-target="#main-unopordiez"><i class="red-text text-accent-4 material-icons">format_align_center</i>1X10</a></li>
+  <li><a href="#" id="menu-user" class="menu-button" data-target="#main-user"><i class="material-icons red-text text-accent-4">face</i>Usuarios</a></li>
+  <li><a href="#" id="cerrar-sesion"><i class="material-icons red-text text-accent-4">power_settings_new</i>Cerrar Sesion</a></li>
+</ul>
+
+<main id="main-init" class="main-section">
+	<div class="container">
+		<h1 class="center">Sistema de Gestion del 1x10 Institucional</h1>
+		
+		<div class="row" id="card-unopordiez-reporte">
+      <!-- Los gráficos se añadirán aquí dinámicamente -->
+  </div>
+	</div>
+</main>
+
+<main id="main-unopordiez" class="main-section">
+  <div class="container">
+    <div class="row" id="card-unopordiez">
+      
+    </div>
+  </div>
+	<div class="container" id="crud-unopordiez">
+        <div class="row">
+            <div class="col s12 m12">                            
+                <div class="row">
+                    <div class="col s12">
+                      <table id="unopordiez-table">
+                        <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>Cedula</th>
+                              <th>Cargo</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>Telefono</th>                              
+                              <th>Acciones</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody id="unopordiez-tbody">
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                </div>               
+            </div>
+        </div>
+  </div>  
+     <!-- Modal Structure -->
+  <div id="modal-unopordiez" class="modal">
+    <div class="modal-content">
+      <h4>1X10 Funcionario: <h4 id="cedula_funcionario"></h4></h4>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12" style="display: none;">
+            <input id="unopordiez-titular" type="number" class="validate">
+            <label for="unopordiez-titular">Cedula 1X10</label>
+          </div>  
+          <div class="input-field col s12">
+            <input id="unopordiez-cedula" type="number" class="validate">
+            <label for="unopordiez-cedula">Cedula 1X10</label>
+          </div>          
+        </div>        
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="agregar_unopordiez" class="modal-close waves-effect waves-light red accent-4 btn-small">Agregar</a>
+    </div>
+  </div>
+  <!-- Modal Structure -->
+  <div id="modal-unopordiez-titular" class="modal">
+    <div class="modal-content">
+      <h4>1X10 Funcionario: <h4 id="cedula_titular"></h4></h4>
+        <div class="row">
+          <div class="col s12">
+            <table id="unopordiez-table">
+              <thead>
+                <tr>
+                    <th>Cedula</th>                                                
+                    <th>Acciones</th>
+                </tr>
+              </thead>
+      
+              <tbody id="carga-unopordiez-tbody">
+                
+              </tbody>
+            </table>
+          </div>
+      </div>      
+    </div>    
+  </div>
+
+</main>
+
+<main id="main-user" class="main-section">
+	<div class="container">
+		<!-- Modal Structure -->
+    
+      <div class="modal-content">
+        <h4>Actualize Contraseña:</h4>
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password1" type="text" class="validate">
+              <label for="password1">Introduzca Nuevo password</label>
+            </div>  
+            <div class="input-field col s12">
+              <input id="password2" type="number" class="validate">
+              <label for="password2">Repita Nuevo password</label>
+            </div>          
+          </div>        
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="update-password" class="modal-close waves-effect waves-light red accent-4 btn-small">Actualizar</a>
+      </div>
+   
+	</div>
+</main>
+
+
+    <script src='../lib/jquery.min.js'></script>
+    <script src='../lib/materialize.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <script src="./dashboard.js"></script> 
+    <script type="module" src="./main/main.js"></script>   
+    <script type="module" src="./1X10/unopordiez.js"></script>
+    <script type="module" src="./user/user.js"></script>
+
+</body>
+</html>
